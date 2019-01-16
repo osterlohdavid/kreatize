@@ -88,4 +88,9 @@ view: offer_statuses {
     type: count
     drill_fields: [id, name]
   }
+
+  measure: offer_status_name {
+    type: string
+    sql: ${name} ;;
+  }
 }

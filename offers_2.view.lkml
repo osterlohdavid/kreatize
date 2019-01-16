@@ -21,6 +21,12 @@ view: offers_2 {
     sql: ${TABLE}.accepted_at ;;
   }
 
+  dimension: offer_accepted {
+    type: yesno
+    sql:  ${accepted_date} != "";;
+  }
+
+
   dimension: all_express {
     type: yesno
     sql: ${TABLE}.all_express ;;

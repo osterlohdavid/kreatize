@@ -26,11 +26,6 @@ view: offer_status_logs {
     sql: ${TABLE}.created_at ;;
   }
 
-  measure: current_status {
-    type: max
-    sql: ${created_date} ;;
-  }
-
   dimension: creator_id {
     type: number
     sql: ${TABLE}.creator_id ;;

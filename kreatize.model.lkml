@@ -19,22 +19,27 @@ include: "*.view.lkml"                       # include all views in this project
 # }
 
 explore: part_summaries_2 {
+  label: "Kreatize Explore"
   join: offers_2 {
     type: left_outer
     relationship: many_to_one
     sql_on: ${part_summaries_2.offer_id} = ${offers_2.id} ;;
+    sql_where: ${offers_2.supplier_id}=102 ;;
+
   }
 
   join: part_prices {
     type: left_outer
     relationship: many_to_one
     sql_on: ${part_summaries_2.id} = ${part_prices.part_summary_id} ;;
+    sql_where: ${part_prices.selected}=1 ;;
   }
 
   join: projects_2 {
     type: left_outer
     relationship: many_to_one
     sql_on: ${offers_2.project_id} = ${projects_2.id} ;;
+    sql_where: ${projects_2.supplier_id}=102 ;;
   }
 
   join: leads_2 {
@@ -45,9 +50,12 @@ explore: part_summaries_2 {
 
   join: offer_status_logs {
     type: left_outer
-    relationship: many_to_one
-    sql_on: ${offer_status_logs.offer_id} = ${offers_2.id} ;;
+    relationship: one_to_one
+    sql_on: ${offer_status_logs.id} = ${offers_2.offer_status_log_id} ;;
+
   }
+
+
 
   join: offer_statuses {
     type: left_outer

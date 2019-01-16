@@ -18,6 +18,7 @@ view: part_prices {
     sql: ${costs} ;;
   }
 
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -101,6 +102,12 @@ view: part_prices {
     type: sum
     value_format_name: eur_0
     sql: ${price}  ;;
+  }
+
+  measure: total_revenue{
+    type: sum
+    value_format_name: eur_0
+    sql: ${price}*${quantity} ;;
   }
 
   dimension: quantity {

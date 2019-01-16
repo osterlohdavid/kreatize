@@ -19,6 +19,7 @@ include: "*.view.lkml"                       # include all views in this project
 # }
 
 explore: part_summaries_2 {
+  label: "Business Overview"
   join: offers_2 {
     type: left_outer
     relationship: many_to_one

@@ -165,13 +165,6 @@ view: part_prices {
     sql: ${gross_profit} ;;
   }
 
-  dimension: total_gross_profit_tier {
-    type: tier
-    sql: ${total_gross_profit} ;;
-    tiers: [500, 1000, 5000, 10000]
-    style: interval
-  }
-
   measure: gross_margin {
     type: number
     value_format_name: percent_2

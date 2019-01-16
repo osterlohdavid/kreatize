@@ -37,6 +37,25 @@ explore: part_summaries_2 {
     sql_on: ${offers_2.project_id} = ${projects_2.id} ;;
   }
 
+  join: leads_2 {
+    type:  left_outer
+    relationship:  one_to_one
+    sql_on: ${leads_2.id}=${projects_2.lead_id} ;;
+  }
+
+  join: offer_status_logs {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${offer_status_logs.offer_id} = ${offers_2.id} ;;
+  }
+
+  join: offer_statuses {
+    type: left_outer
+    relationship: one_to_one
+    sql_on:  ${offer_status_logs.offer_status_id}=${offer_statuses.id} ;;
+  }
+
+
 
 
 

@@ -18,6 +18,7 @@ view: part_prices {
     sql: ${costs} ;;
   }
 
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -100,7 +101,13 @@ view: part_prices {
   measure: total_price {
     type: sum
     value_format_name: eur_0
-    sql: ${price} ;;
+    sql: ${price}  ;;
+  }
+
+  measure: total_revenue{
+    type: sum
+    value_format_name: eur_0
+    sql: ${price}*${quantity} ;;
   }
 
   dimension: quantity {
@@ -118,15 +125,6 @@ view: part_prices {
     sql: ${TABLE}.selected ;;
   }
 
-  measure: selected_part_price {
-    type: sum
-    sql: ${price} ;;
-    filters: {
-      field: selected
-      value: "Yes"
-    }
-  }
-
   dimension: subtotal_price {
     type: number
     sql: ${TABLE}.subtotal_price ;;
@@ -135,7 +133,7 @@ view: part_prices {
   measure: total_subtotal_price {
     type: sum
     value_format_name: eur_0
-    sql: ${subtotal_price} ;;
+    sql: ${subtotal_price}  ;;
   }
 
   dimension: supplier_price {
@@ -156,7 +154,7 @@ view: part_prices {
 
   dimension: gross_profit {
     type: number
-    sql: ${price} - ${supplier_price} ;;
+    sql: (${price} - ${supplier_price})  ;;
   }
 
   measure: total_gross_profit {

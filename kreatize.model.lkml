@@ -48,28 +48,15 @@ explore: part_summaries_2 {
     sql_on: ${leads_2.id}=${projects_2.lead_id} ;;
   }
 
-  join: offer_status_logs {
-    type: left_outer
-    relationship: one_to_one
-    sql_on: ${offer_status_logs.id} = ${offers_2.offer_status_log_id} ;;
-
-  }
-
-  join: offer_statuses {
-    type: left_outer
-    relationship: one_to_one
-    sql_on:  ${offer_status_logs.offer_status_id}=${offer_statuses.id} ;;
-  }
-
   join: bundle_part_summaries {
     type:  left_outer
-    relationship: many_to_one
+    relationship: many_to_many
     sql_on: ${bundle_part_summaries.part_summary_id} = ${part_summaries_2.id};;
   }
 
   join: bundles {
     type: left_outer
-    relationship:  many_to_one
+    relationship:  many_to_many
     sql_on:  ${bundle_part_summaries.bundle_id} = ${bundles.id} ;;
   }
 
@@ -79,9 +66,10 @@ explore: part_summaries_2 {
     sql_on: ${bundle_suppliers.bundle_id} = ${bundles.id};;
   }
 
+
   join: suppliers{
     type:  left_outer
-    relationship: one_to_many
+    relationship: many_to_one
     sql_on: ${bundle_suppliers.supplier_id}=${suppliers.id} ;;
   }
 

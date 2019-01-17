@@ -19,7 +19,7 @@ include: "*.view.lkml"                       # include all views in this project
 # }
 
 explore: part_summaries_2 {
-  label: "Kreatize Explore"
+  label: "Customer Explore"
   join: offers_2 {
     type: left_outer
     relationship: many_to_one
@@ -61,10 +61,16 @@ explore: part_summaries_2 {
     sql_on:  ${offer_status_logs.offer_status_id}=${offer_statuses.id} ;;
   }
 
-  join: bundle_part_summaries {
+}
+
+explore: bundle_part_summaries   {
+  label: "Supplier Explore"
+
+
+  join: part_summaries_2 {
     type:  left_outer
     relationship: many_to_one
-    sql_on: ${bundle_part_summaries.part_summary_id} = ${part_summaries_2.id}=;;
+    sql_on: ${bundle_part_summaries.part_summary_id} = ${part_summaries_2.id};;
   }
 
   join: bundles {
@@ -76,18 +82,14 @@ explore: part_summaries_2 {
   join: bundle_suppliers {
     type:  left_outer
     relationship:  many_to_many
-    sql_on: ${bundle_suppliers.bundle_id} = bundles.id;;
+    sql_on: ${bundle_suppliers.bundle_id} = ${bundles.id};;
   }
 
-join: suppliers{
-  type:  left_outer
-  relationship: one_to_many
-  sql_on: ${bundle_suppliers.supplier_id}=${suppliers.id} ;;
-}
-
-
-
-
+  join: suppliers{
+    type:  left_outer
+    relationship: one_to_many
+    sql_on: ${bundle_suppliers.supplier_id}=${suppliers.id} ;;
+  }
 
 
 }

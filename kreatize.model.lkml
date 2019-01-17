@@ -61,13 +61,7 @@ explore: part_summaries_2 {
     sql_on:  ${offer_status_logs.offer_status_id}=${offer_statuses.id} ;;
   }
 
-}
-
-explore: bundle_part_summaries   {
-  label: "Supplier Explore"
-
-
-  join: part_summaries_2 {
+  join: bundle_part_summaries {
     type:  left_outer
     relationship: many_to_one
     sql_on: ${bundle_part_summaries.part_summary_id} = ${part_summaries_2.id};;

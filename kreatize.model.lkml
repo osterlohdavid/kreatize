@@ -19,14 +19,25 @@ include: "*.view.lkml"                       # include all views in this project
 # }
 
 explore: part_summaries_2 {
+  always_filter: {
+    filters: {
+      field: suppliers.id
+      value: "102"
+    }
+  }
 
   label: "Customer Explore"
   join: offers_2 {
     type: left_outer
     relationship: many_to_one
     sql_on: ${part_summaries_2.offer_id} = ${offers_2.id} ;;
-    sql_where: ${offers_2.supplier_id}=102 ;;
+#     sql_where: ${offers_2.supplier_id}=102 ;;
+  }
 
+  join: suppliers{
+    type:  left_outer
+    relationship: many_to_one
+    sql_on: ${offers_2.supplier_id}=${suppliers.id} ;;
   }
 
   join: part_prices {
@@ -40,7 +51,7 @@ explore: part_summaries_2 {
     type: left_outer
     relationship: many_to_one
     sql_on: ${offers_2.project_id} = ${projects_2.id} ;;
-    sql_where: ${projects_2.supplier_id}=102 ;;
+#     sql_where: ${projects_2.supplier_id}=102 ;;
   }
 
   join: leads_2 {
@@ -66,13 +77,5 @@ explore: part_summaries_2 {
     relationship:  many_to_many
     sql_on: ${bundle_suppliers.bundle_id} = ${bundles.id};;
   }
-
-
-  join: suppliers{
-    type:  left_outer
-    relationship: many_to_one
-    sql_on: ${bundle_suppliers.supplier_id}=${suppliers.id} ;;
-  }
-
 
 }

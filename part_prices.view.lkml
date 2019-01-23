@@ -154,7 +154,7 @@ view: part_prices {
 
   dimension: gross_profit {
     type: number
-    sql: (${price} - ${supplier_price})  ;;
+    sql: (${price} - ${supplier_price*0.2})  ;;
   }
 
   measure: total_gross_profit {

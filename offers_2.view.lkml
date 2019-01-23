@@ -15,6 +15,8 @@ view: offers_2 {
         `O`.`validity_end_date` AS `validity_end_date`,
         `O`.`project_id` AS `project_id`,
         `O`.`price` AS `price`,
+        `O`.`subtotal_price` AS `subtotal_price`,
+        `O`.`services_total` AS `services_total`,
         `O`.`supplier_id` AS `supplier_id`,
         `O`.`offer_uid` AS `offer_uid`,
         `O`.`offer_kid` AS `offer_kid`,
@@ -503,6 +505,12 @@ view: offers_2 {
   dimension: price {
     type: number
     sql: ${TABLE}.price ;;
+  }
+
+  measure: total_ordervalue {
+    type:  sum
+    value_format_name: eur_0
+    sql:${price} ;;
   }
 
   dimension: priority {

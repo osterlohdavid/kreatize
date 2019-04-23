@@ -19,27 +19,26 @@
 
 <div style="width: 100%; clear: both; float: left; padding-top: 40px; padding-bottom: 40px;">
   <div style="width: 85%; margin: auto;">
-    
+
     <div style="padding-left: 20px;float:left; width: 50%;">
       <img style="border-radius: 50%; width: 100px; float:left;" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y">
       <div style="float:left; text-align: left; padding-left: 15px; padding-top: 15px;">
         <p><span style="font-size: 16px;">Account Executive</span><br>
-        <span style="font-weight: 300;">[AE_NAME]<br> 
-        [AE_EMAIL]</span></p> 
+        <span style="font-weight: 300;">[AE_NAME]<br>
+        [AE_EMAIL]</span></p>
       </div>
     </div>
-    
+
     <div style="padding-left: 40px;float:left; width: 50%;">
       <img style="border-radius: 50%; width: 100px; float:left;" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&f=y">
       <div style="float:left; text-align: left; padding-left: 15px; padding-top: 15px;">
         <p><span style="font-size: 16px;">Analyst</span><br>
-        <span style="font-weight: 300;">[ANALYST_NAME]<br> 
-        [ANALYST_EMAIL]</span></p> 
+        <span style="font-weight: 300;">[ANALYST_NAME]<br>
+        [ANALYST_EMAIL]</span></p>
       </div>
     </div>
-    
+
   </div>
 </div>
-  
-</div>
 
+</div>
